@@ -76,9 +76,13 @@ class LowestScrabble:
     triple_letter = [(1,5), (1, 9), (5,1), (5,5), (5,9), (5,13), (9,1), (9,5), (9,9), (9,13), (13, 5), (13,9)]
     double_letter = [(0, 3), (0,11), (2,6), (2,8), (3,0), (3,7), (3,14), (6,2), (6,6), (6,8), (6,12), (7,3), (7,11), (8,2), (8,6), (8,8), (8, 12), (11,0), (11,7), (11,14), (12,6), (12,8), (14, 3), (14, 11)]
 
+    scrabble_dict = open("scrabble-dictionary.txt", "r")
+
     def __init__(self, displayBoard=False):
         self.__turn_number = 0
         self.__game_over = False
+        self.__grid = []
+        self.__displayBoard = displayBoard
         self.__bag = {
         '?':Letter('?', 0, 2),
         'e':Letter('e', 1, 12),
@@ -115,7 +119,6 @@ class LowestScrabble:
             self.__s = self.__t.getscreen()
             self.__s.title("Epic Scrabble Game of Epicness")
             self.__s.tracer(0)
-            self.__grid = []
 
             xpos, ypos = -310, -310
             for row in range(15):
@@ -128,7 +131,11 @@ class LowestScrabble:
                     xpos += 44
                 xpos = -310
             self.__s.update()
-            self.__s.mainloop()
+        else:
+            for row in range(15):
+                self.__grid.append([])
+                for column in range(15):
+                    self.__grid[row].append(Cell(self.__t, 0, 0, 0, 0, self.getType(row,column)))
 
     def getType(self, row, col):
         if (row,col) in self.triple_word:
@@ -142,10 +149,30 @@ class LowestScrabble:
         else:
             return 'blank'
 
+    def getTurnNumber(self):
+        return self.__turn_number
+
+    def incrTurnNumber(self):
+        self.__turn_number += 1
+
+    def takeTurn(self):
+        scrabble_dict.seek(0)
+        new_word = ''
+        target_cells = getTargetCells(self)
+        while(word_not_acceptable...)
+
+    def lettersRemaining(self):
+        total = 0
+        for letter in self.__bag:
+            total += letter.getRemaining()
+        return total
+
     def inBoard(self):
         if 0 <= row < 15 and 0 <= col < 15:
             return True
         return False
+
+
 
 def compute_score(word):
     return sum([scores[letter.upper()] for letter in word])
