@@ -1,0 +1,89 @@
+Project goal:
+To create an automated scrabble program that attempts to get the lowest possible
+total score.
+
+Motivations:
+I've always been a fan of scrabble. Eventually machine learning could be incorporated.
+Also, to practice coding in Python for fun.
+
+Data Structures:
+dictionary with letters and letter objects
+2d array for cell objects
+scrabble dictionary document to look up words in
+top lowest scores with board info saved
+
+Graphics:
+Have a choice to display board while playing or let game run in background
+Turtle graphics for board(displays cell type and words placed)
+Top 15 lowest scores
+Current score
+possibly a % chance to get a new lowest score in top 15
+
+Objects:
+
+Cell:
+location (15x15) 0-14, 0-14, Board array will contain cells
+multipliers(word, letter)
+type(blank space(default)
+    triple letter score
+    triple word score
+    double letter score
+    double word score
+    center space (double word score))
+
+Letter:
+character, Bag dictionary will hash to Letter object:
+point value
+score value
+amount remaining
+
+Player:
+score
+
+Game:
+turn number
+game over, boolean 0 or 1
+
+Scoring rules
+-first apply triple and double letter scores if applicable
+-then apply double/triple word score(possibly more than one for two double words)
+-then add points for bingos
+
+Algorithm for attempting to get the lowest score possible
+two approaches:
+
+ML approach(unfamiliar with, will require research)
+-favor choices that lead to lower scores in majority of games or other such rules
+
+My general approach:
+Prefer larger words with minimum of special tiles
+
+Both approaches:
+-compare each word's minimum and verifying all connecting words are in dictionary
+-bounds checking for placing words
+-have all letters instantly available
+-choose word
+-place word according to certain criteria
+-score word
+-remove letters from available letters
+
+How to handle leftover letters?
+-Normally they're deducted from points, so add them as a penalty
+-Eventually want to have the program only use games that used all letters
+
+
+Turn procedure:
+If score = 0, then place word off the center
+words cannot be placed diagonally, only up/down left/right
+words must connect off of previously placed words if not the first turn
+criteria for when to determine game over(out of letters or can't place)
+
+Gameover handling:
+determine if new top score, if so edit top score document
+click to exit for turtle if displaying graphics
+for long runs, stop program if new lowest score, alert, display score
+
+Possible future improvements:
+-Instead of fetching highest score/other data from local text files, could do a database
+for practice.
+-Have a versus mode where a player tries to get a lower score than the CPU.
