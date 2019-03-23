@@ -33,7 +33,6 @@ type(blank space(default)
 
 Letter:
 character, Bag dictionary will hash to Letter object:
-point value
 score value
 amount remaining
 
