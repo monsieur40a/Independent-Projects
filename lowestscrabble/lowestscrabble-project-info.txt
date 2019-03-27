@@ -56,6 +56,9 @@ ML approach(unfamiliar with, will require research)
 
 My general approach:
 Prefer larger words with minimum of special tiles
+prefer choices that only lead to one word formed per play
+
+Longest words made up of other words is of interest
 
 Both approaches:
 -compare each word's minimum and verifying all connecting words are in dictionary

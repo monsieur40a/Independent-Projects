@@ -83,7 +83,7 @@ class LowestScrabble:
         self.__game_over = False
         self.__grid = []
         self.__displayBoard = displayBoard
-        self.__bag = {
+        self.__bag = { # add up to 187 points
         '?':Letter('?', 0, 2),
         'e':Letter('e', 1, 12),
         'a':Letter('a', 1, 9),

@@ -1,0 +1,6 @@
+best/worst scrabble score
+bloodbank panel automated compatible blood project
+fractal customizer - you draw pattern, it repeats it recursively x # times
+link to the past - aka topological sort with partial dependencies(need to research possiblity)
+spice rack customizer - given a length/width/# jars, show template, wood cuts needed
+perling automater
